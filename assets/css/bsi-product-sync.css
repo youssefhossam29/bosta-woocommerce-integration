@@ -1,0 +1,117 @@
+/**
+ * BSI Product Sync — Admin Styles
+ *
+ * @package BSI_Product_Sync
+ * @since   1.2.0
+ */
+
+/* ── BSI Wrap ─────────────────────────────────────────────────────── */
+.bsi-wrap { max-width: 900px; margin-top: 20px; }
+.bsi-page-title {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 22px; font-weight: 700; color: #1e293b; margin-bottom: 20px;
+}
+
+/* ── Card ──────────────────────────────────────────────────────────── */
+.bsi-card {
+    background: #fff; border: 1px solid #e2e8f0; border-radius: 10px;
+    margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    overflow: hidden;
+}
+.bsi-card-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 24px; border-bottom: 1px solid #f1f5f9; background: #f8fafc;
+}
+.bsi-card-header h2 { margin: 0; font-size: 15px; color: #334155; }
+.bsi-card-body { padding: 24px; }
+.bsi-btn-icon {
+    background: none; border: none; cursor: pointer; color: #64748b;
+    padding: 4px; border-radius: 4px; transition: color .2s;
+}
+.bsi-btn-icon:hover { color: #0ea5e9; }
+.bsi-desc { color: #64748b; font-size: 13.5px; margin: 0 0 20px; line-height: 1.7; }
+
+/* ── Stats grid ────────────────────────────────────────────────────── */
+.bsi-stats-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+}
+.bsi-stat {
+    display: flex; align-items: center; gap: 14px;
+    background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;
+    padding: 16px; transition: box-shadow .2s;
+}
+.bsi-stat:hover { box-shadow: 0 4px 12px rgba(0,0,0,.06); }
+.bsi-stat-icon { font-size: 28px !important; width: 28px !important; height: 28px !important; color: #94a3b8; }
+.bsi-stat--green .bsi-stat-icon { color: #10b981; }
+.bsi-stat--orange .bsi-stat-icon { color: #f59e0b; }
+.bsi-stat--blue .bsi-stat-icon { color: #0ea5e9; }
+.bsi-stat-val { display: block; font-size: 28px; font-weight: 700; color: #1e293b; line-height: 1; }
+.bsi-stat-lbl { display: block; font-size: 12px; color: #64748b; margin-top: 4px; }
+
+/* ── Progress bar ──────────────────────────────────────────────────── */
+.bsi-progress-wrap { margin-bottom: 20px; }
+.bsi-progress-info {
+    display: flex; justify-content: space-between;
+    font-size: 13px; color: #475569; margin-bottom: 8px;
+}
+.bsi-progress-track {
+    background: #e2e8f0; border-radius: 50px; height: 10px; overflow: hidden;
+}
+.bsi-progress-bar {
+    height: 100%; width: 0; border-radius: 50px;
+    background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+    transition: width .4s ease;
+}
+
+/* ── Errors list ───────────────────────────────────────────────────── */
+.bsi-errors-list {
+    margin-top: 12px; padding: 12px 16px; background: #fef2f2;
+    border: 1px solid #fecaca; border-radius: 6px; max-height: 180px;
+    overflow-y: auto;
+}
+.bsi-error-item { color: #b91c1c; font-size: 12.5px; padding: 3px 0; }
+
+/* ── Notices ───────────────────────────────────────────────────────── */
+.bsi-notice {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 16px; border-radius: 6px; margin-bottom: 16px;
+    font-size: 14px; font-weight: 500;
+}
+.bsi-notice--success { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+.bsi-notice--success .dashicons { color: #22c55e; font-size: 20px; }
+
+/* ── Action buttons ────────────────────────────────────────────────── */
+.bsi-actions { display: flex; gap: 12px; align-items: center; }
+.bsi-btn-primary {
+    display: inline-flex !important; align-items: center; gap: 6px;
+    background: #0ea5e9 !important; border-color: #0284c7 !important;
+    color: #fff !important; height: 38px; padding: 0 18px !important;
+    border-radius: 6px !important; font-weight: 600 !important;
+    transition: background .2s !important;
+}
+.bsi-btn-primary:hover { background: #0284c7 !important; }
+.bsi-btn-stop {
+    background: #fff !important; border-color: #e2e8f0 !important;
+    color: #64748b !important; height: 38px;
+}
+
+/* ── Products list column ──────────────────────────────────────────── */
+.column-bosta_sync_status { width: 50px !important; text-align: center !important; }
+.bsi-col-icon { color: #0ea5e9; }
+.bsi-badge {
+    display: inline-block; width: 24px; height: 24px;
+    border-radius: 50%; font-size: 13px; font-weight: 700;
+    line-height: 24px; text-align: center;
+}
+.bsi-badge--synced { background: #d1fae5; color: #065f46; }
+.bsi-badge--pending { background: #f1f5f9; color: #94a3b8; }
+
+/* ── Row action ────────────────────────────────────────────────────── */
+.bsi-row-sync { color: #0ea5e9 !important; }
+.bsi-row-sync:hover { color: #0284c7 !important; }
+.bsi-row-sync.bsi-syncing { opacity: .6; pointer-events: none; }
+
+/* ── Spinner Animation ─────────────────────────────────────────────── */
+@keyframes bsi-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.bsi-spinning .dashicons { display: inline-block; animation: bsi-spin 0.8s linear infinite; }
