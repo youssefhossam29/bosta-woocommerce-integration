@@ -3,7 +3,7 @@
  * Plugin Name: Bosta WooCommerce Status Integration
  * Plugin URI: https://github.com/youssefhossam29/bosta-woocommerce-integration
  * Description: Complete integration between WooCommerce and Bosta shipping service with role-based permissions, webhook automation, order status management, and returns handling
- * Version: 1.0.0
+ * Version: 2.0.0
  * Author: Youssef Hossam
  * Author URI: https://github.com/youssefhossam29
  * Text Domain: bosta-woocommerce
@@ -23,7 +23,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('BOSTA_WC_VERSION', '1.0.0');
+define('BOSTA_WC_VERSION', '2.0.0');
 define('BOSTA_WC_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('BOSTA_WC_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('BOSTA_WC_PLUGIN_FILE', __FILE__);
@@ -94,11 +94,14 @@ final class BSI_Main_Plugin {
 		require_once BOSTA_WC_PLUGIN_DIR . 'includes/class-bosta-dashboard-widget.php';
 		require_once BOSTA_WC_PLUGIN_DIR . 'includes/class_payment_handler.php';
 		require_once BOSTA_WC_PLUGIN_DIR . 'includes/class-bosta-returns-handler.php';
+		require_once BOSTA_WC_PLUGIN_DIR . 'includes/class-bsi-product-sync.php';
+		require_once BOSTA_WC_PLUGIN_DIR . 'includes/class-bsi-product-sync-admin.php';
 
 		if (is_admin()) {
 			new BSI_Settings();
 			new BSI_Admin_UI();
 			new BSI_Dashboard_Widget();
+			new BSI_Product_Sync_Admin();
 		}
 
 		new BSI_Order_Status_Manager();
@@ -107,6 +110,7 @@ final class BSI_Main_Plugin {
 		new BSI_COD_Handler();
 		new BSI_Payment_Handler();
 		BSI_Returns_Handler::init();
+		BSI_Product_Sync::init();
 	}
 
 	public function check_requirements() {

@@ -52,7 +52,17 @@ Official support for Bosta **Customer Return Pickup (Type 25)** deliveries:
 
 ---
 
-### 6. Architecture & Security
+### 6. Product & Real-Time Stock Synchronization (v2.0)
+Advanced bidirectional synchronization between WooCommerce products and **Bosta API v2**:
+* **Batched Catalogue Migration:** Syncs hundreds of store products in safe, automated batches of 10 items with a live AJAX progress modal to eliminate gateway timeouts (504 errors).
+* **Instant Stock Decrement on Order:** Hooks into `woocommerce_product_set_stock` and `woocommerce_variation_set_stock` to immediately reflect stock changes caused by checkouts and returns on Bosta.
+* **Variable Products Support:** Resolves attributes (`optionsOrder`), maps individual variation IDs, sends targeted `editedVariances` updates, and automatically inherits parent stock for unassigned variants.
+* **0ms Fast Skip:** Automatically skips already-migrated products upon subsequent sync runs, saving server resources and API quota.
+* **Product Admin Integration:** Displays sync indicators, Bosta product links, and manual one-click sync buttons directly in the WooCommerce Products table and edit screens.
+
+---
+
+### 7. Architecture & Security
 * **WooCommerce HPOS Compatible:** Full compatibility with High-Performance Order Storage (custom order tables) with fallback to traditional `wp_postmeta`.
 * **Security & Verification:** Secure webhook signature validation using shared secrets, WordPress nonces, capability checks, and data sanitization.
 * **Admin UI Enhancements:** Custom order list column showing Bosta tracking links, detailed meta boxes, and dashboard summary widgets.
@@ -102,7 +112,7 @@ do_action('bosta_handle_cod_collection', $order, $data);
 apply_filters('bosta_state_mapping', $status_map);
 ```
 
-### Order Metadata Keys
+### Order & Product Metadata Keys
 * `bosta_tracking_number`: Primary Bosta tracking number.
 * `bosta_sync_status`: Sync state (`success` / `failed`).
 * `bosta_sync_date`: Timestamp of the initial synchronization.
@@ -111,6 +121,8 @@ apply_filters('bosta_state_mapping', $status_map);
 * `cod_collected_date`: Timestamp of COD collection.
 * `bosta_return_delivery_id`: Bosta delivery ID for customer return pickup.
 * `bosta_return_tracking_number`: Tracking number for the return shipment.
+* `_bosta_product_id`: Remote Bosta product ID linked to WooCommerce postmeta.
+* `_bosta_variation_ids_map`: JSON-encoded map of WooCommerce variation IDs to Bosta variant IDs.
 
 ---
 
